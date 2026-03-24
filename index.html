@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Na Pele do Outro | Simulador de Empatia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Import Google Fonts (Outfit & Roboto Mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Roboto+Mono:wght@300;500&display=swap" rel="stylesheet">
+    <!-- Import Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <!-- Canvas Principal do Jogo -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- Overlay de Introdução / Menu -->
+    <div id="intro-overlay" class="overlay">
+        <div class="content">
+            <h1 class="glow-text">NA PELE DO OUTRO</h1>
+            <p class="subtitle">Uma Experiência Imersiva de Empatia Urbana</p>
+            <div class="description-box">
+                <p>O design das cidades e o comportamento individual moldam nossa segurança.</p>
+                <p>Nesta experiência, você alternará entre 3 papéis no mesmo cenário para ver o impacto de suas ações.</p>
+            </div>
+            <button id="start-btn" class="neon-btn">INICIAR EXPERIÊNCIA</button>
+            <p class="audio-notice">🔊 Recomenda-se o uso de fones de ouvido para maior imersão.</p>
+        </div>
+    </div>
+
+    <!-- Interface HUD (Diferente para cada papel) -->
+    <div id="hud-container" class="hidden">
+        <!-- HUD Superior: Status e Papel -->
+        <div class="hud-header">
+            <div class="role-indicator">
+                <span class="label">PERSPECTIVA:</span>
+                <span id="current-role" class="value">MOTORISTA</span>
+            </div>
+            <div class="objective-box">
+                <span id="objective-text">Chegue ao trabalho sem se atrasar.</span>
+            </div>
+        </div>
+
+        <!-- HUD Esquerdo: Painel do Veículo ou Sensor -->
+        <div class="hud-left glass">
+            <div id="driver-dashboard" class="hud-panel">
+                <div class="gauge">
+                    <span class="gauge-label">VELOCIDADE</span>
+                    <span id="speed-value" class="gauge-value">0</span> <span class="unit">km/h</span>
+                </div>
+                <div class="gauge">
+                    <span class="gauge-label">IMPACIÊNCIA</span>
+                    <div class="progress-bar">
+                        <div id="impatience-bar" class="progress-fill warning"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cyclist-dashboard" class="hud-panel hidden">
+                <div class="heart-rate">
+                    <div class="heart-icon">❤️</div>
+                    <div>
+                        <span id="bpm-value" class="gauge-value">72</span> <span class="unit">BPM</span>
+                    </div>
+                </div>
+                <div class="peripheral-warning">
+                    <span class="warning-text">VISTA PERIFÉRICA TRÊMULA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- HUD Direito: Celular / Notificações (Driver) -->
+        <div id="phone-container" class="hud-right glass hidden">
+            <div class="phone-screen">
+                <div class="phone-header">13:45 💬</div>
+                <div class="phone-content">
+                    <p class="msg-sender">Chefe</p>
+                    <p class="msg-text">"Você está atrasado! Onde está você?"</p>
+                </div>
+                <div class="phone-actions">
+                    <button id="phone-reply-btn" class="reply-btn">RESPONDER (ESPAÇO)</button>
+                </div>
+            </div>
+            <div class="phone-glow"></div>
+        </div>
+
+        <!-- Alertas na Tela -->
+        <div id="alert-box" class="alert-box hidden">
+            <span id="alert-text">ATENÇÃO: PONTO CEGO</span>
+        </div>
+    </div>
+
+    <!-- Barra de Conclusão / Transição -->
+    <div id="transition-overlay" class="overlay hidden">
+        <div class="content">
+            <h2 id="transition-title">Fase Concluída</h2>
+            <p id="transition-desc">Suas ações deixaram consequências...</p>
+            <button id="next-phase-btn" class="neon-btn">PROSSEGUIR</button>
+        </div>
+    </div>
+
+    <!-- Scripts do Jogo -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
