@@ -85,10 +85,10 @@ export class DriverScene {
 
         // Steer Left/Right
         if (this.keys['ArrowLeft'] || this.keys['KeyA']) {
-            this.camera.position.x -= 3 * deltaTime;
+            this.camera.position.x += 3 * deltaTime;
         }
         if (this.keys['ArrowRight'] || this.keys['KeyD']) {
-            this.camera.position.x += 3 * deltaTime;
+            this.camera.position.x -= 3 * deltaTime;
         }
 
         // Limit steering limits

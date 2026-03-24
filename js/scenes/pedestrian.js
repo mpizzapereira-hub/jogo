@@ -70,9 +70,9 @@ export class PedestrianScene {
         }
 
         if (this.keys['ArrowLeft'] || this.keys['KeyA']) {
-            this.camera.position.z += this.speed * deltaTime; // Left
+            this.camera.position.z -= this.speed * deltaTime; // Left
         } else if (this.keys['ArrowRight'] || this.keys['KeyD']) {
-            this.camera.position.z -= this.speed * deltaTime; // Right
+            this.camera.position.z += this.speed * deltaTime; // Right
         }
 
         // Move Traffic (Along Z-Axis)
